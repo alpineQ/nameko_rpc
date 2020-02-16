@@ -1,0 +1,17 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq
+
+  server:
+    build: server
+    restart: always
+    depends_on:
+      - rabbitmq
+
+  client:
+    build: client
+    restart: always
+    depends_on:
+      - server
+      - rabbitmq
