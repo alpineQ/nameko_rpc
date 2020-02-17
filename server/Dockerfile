@@ -1,5 +1,7 @@
-FROM python:3-onbuild
+FROM python:3.8
 
-CMD ["nameko", "run", "--config", "config.yml", "server"]
+
+COPY . /server
+WORKDIR /server/
 
 

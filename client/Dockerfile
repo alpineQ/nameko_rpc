@@ -1,4 +1,4 @@
-FROM python:3-onbuild
+FROM python:3.8-alpine
 
-CMD python client.py
-
+COPY . /client
+WORKDIR /client/

@@ -1,17 +1,18 @@
 version: "3"
 services:
   rabbitmq:
-    image: rabbitmq
+    image: rabbitmq:3.8-alpine
 
   server:
     build: server
     restart: always
+    command: nameko run --config config.yml server
     depends_on:
       - rabbitmq
 
   client:
     build: client
-    restart: always
+    command: python client.py
     depends_on:
       - server
       - rabbitmq
